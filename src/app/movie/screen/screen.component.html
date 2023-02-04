@@ -1,0 +1,9 @@
+<div class="theater-container">
+    <div class="screen"></div>
+    <div class="row" *ngFor="let row of seats">
+      <div class="seat" *ngFor="let seat of row">
+        <span class="seat-number">{{ seat.number }}</span>
+        <button class="btn btn-primary" [disabled]="seat.reserved" (click)="reserveSeat(seat)">Reserve</button>
+      </div>
+    </div>
+  </div>

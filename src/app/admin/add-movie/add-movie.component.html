@@ -1,0 +1,37 @@
+<form [formGroup]="movie" (ngSubmit)="onSubmit()" novalidate>
+    <div formGroupName='cast'>
+        <div *ngFor="let c of casts.controls; let i = index">
+            <div [formGroupName]="i">
+                <div>
+                    <label for="name">Cast Name:</label>
+                    <input type="text" id="name" formControlName="name">
+                    <div *ngIf="movie.get('cast.name')?.touched && movie.get('cast.name')?.invalid">
+                        <div *ngIf="movie.get('cast.name')?.errors?.['required']" style="color: red;">Name is required
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="movieName">In Movie Name:</label>
+                    <input type="text" id="movieName" formControlName="movieName">
+                    <div *ngIf="movie.get('cast.movieName')?.touched && movie.get('cast.movieName')?.invalid">
+                        <div *ngIf="movie.get('cast.movieName')?.errors?.['required']" style="color: red;">movie Name is
+                            required
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="image">Cast Image:</label>
+                    <input type="file" id="image" (change)="uploadImage(i,$event)" formControlName="image">
+                    <div *ngIf="movie.get('cast.image')?.touched && movie.get('cast.image')?.invalid">
+                        <div *ngIf="movie.get('cast.image')?.errors?.['required']" style="color: red;">First Name is
+                            required
+                        </div>
+                    </div>
+                </div>
+                <button type="button" (click)="addCast()">Add</button>
+                <button [disabled] (click)="removeCast(i)">Remove</button>
+            </div>
+        </div>
+    </div>
+    <button type="submit" [disabled]="movie.invalid">Submit</button>
+</form>

@@ -9,6 +9,8 @@ import { RegistrationComponent } from './user/registration/registration.componen
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './user/login/login.component';
+import { AddMovieComponent } from './admin/add-movie/add-movie.component';
+import { ScreenComponent } from './movie/screen/screen.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { LoginComponent } from './user/login/login.component';
     AdminComponent,
     UserComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    AddMovieComponent,
+    ScreenComponent
   ],
   imports: [
     BrowserModule,
