@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { RegisterUserService } from 'src/app/services/register-user.service';
+
 
 @Component({
   selector: 'app-registration',
@@ -7,12 +10,23 @@ import { Component } from '@angular/core';
 })
 export class RegistrationComponent {
 
-  username: string='';
-  email: string='';
-  password: string='';
+  constructor(private registerService:RegisterUserService){}
+  
+  registration = new FormGroup({
+    firstName: new FormControl('',[Validators.required]),
+    lastName: new FormControl('',[Validators.required]),
+    email: new FormControl('',[Validators.required,Validators.email]),
+    password: new FormControl('',[Validators.required,Validators.minLength(6)]),
+    mobileNo: new FormControl('',[Validators.required,Validators.minLength(10),Validators.maxLength(10)]),
+    city: new FormControl('',[Validators.required])
+  });
 
   onSubmit() {
-    console.log(this.username, this.email, this.password);
-    // Add code here to send the form data to a server for processing
+    if (this.registration.invalid) {
+      return;
+    }else{
+      this.registerService.register(this.registration.value);
+    }
+    console.log(this.registration.value);
   }
 }

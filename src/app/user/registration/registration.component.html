@@ -1,15 +1,48 @@
-<form (ngSubmit)="onSubmit()">
-    <div>
-      <label for="username">Username:</label>
-      <input type="text" id="username" [(ngModel)]="username" name="username">
+<form [formGroup]="registration" (ngSubmit)="onSubmit()" novalidate>
+  <div>
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" formControlName="firstName">
+    <div *ngIf="registration.get('firstName')?.touched && registration.get('firstName')?.invalid">
+      <div *ngIf="registration.get('firstName')?.errors?.['required']" style="color: red;">First Name is required</div>
     </div>
-    <div>
-      <label for="email">Email:</label>
-      <input type="email" id="email" [(ngModel)]="email" name="email">
+  </div>
+  <div>
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" formControlName="lastName">
+    <div *ngIf="registration.get('lastName')?.touched && registration.get('lastName')?.invalid">
+      <div *ngIf="registration.get('lastName')?.errors?.['required']" style="color: red;">Last Name is required</div>
     </div>
-    <div>
-      <label for="password">Password:</label>
-      <input type="password" id="password" [(ngModel)]="password" name="password">
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email">
+    <div *ngIf="registration.get('email')?.touched && registration.get('email')?.invalid">
+      <div *ngIf="registration.get('email')?.errors?.['required']" style="color: red;">Email is required</div>
     </div>
-    <button type="submit">Submit</button>
-  </form>
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" formControlName="password">
+    <div *ngIf="registration.get('password')?.touched && registration.get('password')?.invalid">
+      <div *ngIf="registration.get('password')?.errors?.['required']" style="color: red;">password is required</div>
+      <div *ngIf="registration.get('password')?.errors?.['minlength']" style="color: red;">password should be at least 6 characters</div>
+    </div>
+  </div>
+  <div>
+    <label for="mobileNo">Mobile No:</label>
+    <input type="text" id="mobileNo" formControlName="mobileNo">
+    <div *ngIf="registration.get('mobileNo')?.touched && registration.get('mobileNo')?.invalid">
+      <div *ngIf="registration.get('mobileNo')?.errors?.['required']" style="color: red;">Mobile no. is required</div>
+      <div *ngIf="registration.get('mobileNo')?.errors?.['minlength']" style="color: red;">Mobile no. should be 10 digit</div>
+      <div *ngIf="registration.get('mobileNo')?.errors?.['maxlength']" style="color: red;">Mobile no. should be 10 digit</div>
+    </div>
+  </div>
+  <div>
+    <label for="city">City:</label>
+    <input type="text" id="city" formControlName="city">
+    <div *ngIf="registration.get('city')?.touched && registration.get('city')?.invalid">
+      <div *ngIf="registration.get('city')?.errors?.['required']" style="color: red;">city is required</div>
+    </div>
+  </div>
+  <button type="submit" [disabled]="registration.invalid">Submit</button>
+</form>

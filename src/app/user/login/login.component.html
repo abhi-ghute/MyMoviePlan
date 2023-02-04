@@ -1,0 +1,17 @@
+<form [formGroup]="login" (ngSubmit)="onSubmit()" novalidate>
+    <div>
+      <label for="userName">userName:</label>
+      <input type="userName" id="userName" formControlName="userName">
+      <div *ngIf="login.get('userName')?.touched && login.get('userName')?.invalid">
+        <div *ngIf="login.get('userName')?.errors?.['required']" style="color: red;">userName is required</div>
+      </div>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password">
+      <div *ngIf="login.get('password')?.touched && login.get('password')?.invalid">
+        <div *ngIf="login.get('password')?.errors?.['required']" style="color: red;">password is required</div>
+      </div>
+    </div>
+    <button type="submit" [disabled]="login.invalid">Submit</button>
+  </form>
