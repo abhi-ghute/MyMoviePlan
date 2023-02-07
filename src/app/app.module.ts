@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './user/login/login.component';
 import { AddMovieComponent } from './admin/add-movie/add-movie.component';
 import { ScreenComponent } from './movie/screen/screen.component';
+import { EditmovieComponent } from './admin/editmovie/editmovie.component';
+import { MoviesListComponent } from './admin/movies-list/movies-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ScreenComponent } from './movie/screen/screen.component';
     RegistrationComponent,
     LoginComponent,
     AddMovieComponent,
-    ScreenComponent
+    ScreenComponent,
+    EditmovieComponent,
+    MoviesListComponent
   ],
   imports: [
     BrowserModule,

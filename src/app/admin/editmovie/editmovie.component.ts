@@ -1,16 +1,42 @@
-import { Component, OnChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
-  selector: 'app-add-movie',
-  templateUrl: './add-movie.component.html',
-  styleUrls: ['./add-movie.component.css']
+  selector: 'app-editmovie',
+  templateUrl: './editmovie.component.html',
+  styleUrls: ['./editmovie.component.css']
 })
-export class AddMovieComponent {
+export class EditmovieComponent {
 
-  constructor(private movieService:MovieService){}
-  
+  movieData:any;
+  currentDate:string='';
+  id:string='';
+  constructor(private movieService:MovieService,private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
+
+    this.movieService.showMovies().subscribe(data => {
+      for(let d of data){
+        if(d.id==this.id){
+          this.movieData = d;
+          console.log(this.movieData.releaseDate);
+        }
+      }
+
+      for(let i=1;i<this.movieData.cast.length;i++){
+        this.addCast();
+      } 
+      for(let i=1;i<this.movieData.crew.length;i++){
+        this.addCrew();
+      } 
+      this.currentDate= this.movieData.releaseDate;
+      this.movie.patchValue(this.movieData);
+    });
+  }
+
   movie = new FormGroup({
     name:new FormControl('',[Validators.required]),
     classicPrice:new FormControl('',[Validators.required]),
@@ -19,19 +45,19 @@ export class AddMovieComponent {
     type:new FormControl('',[Validators.required]),
     language:new FormControl('',[Validators.required]),
     description:new FormControl('',[Validators.required]),
-    image:new FormControl('',[Validators.required]),
+    newimage:new FormControl('',[Validators.required]),
     releaseDate:new FormControl('',[Validators.required]),
     visuals:new FormControl('',[Validators.required]),
     cast: new FormArray([new FormGroup({
       name:new FormControl('',[Validators.required]),
       movieName:new FormControl('',[Validators.required]),
-      image:new FormControl('',[Validators.required]),
+      newimage:new FormControl('',[Validators.required]),
       imageData:new FormControl('',[Validators.required])
     })]),
     crew:new FormArray([new FormGroup({
       name:new FormControl('',[Validators.required]),
       role:new FormControl('',[Validators.required]),
-      image:new FormControl('',[Validators.required]),
+      newimage:new FormControl('',[Validators.required]),
       imageData:new FormControl('',[Validators.required])
     })]),
     status:new FormControl('',[Validators.required]),
@@ -104,7 +130,7 @@ export class AddMovieComponent {
       const imageDataUrl = imageData.toString();
       console.log(imageDataUrl);
       
-      this.movie.get('image')?.setValue(imageDataUrl);
+      this.movie.get('newimage')?.setValue(imageDataUrl);
     };
     
     reader.readAsDataURL(file);
@@ -113,10 +139,9 @@ export class AddMovieComponent {
     if (this.movie.invalid) {
       return;
     }else{
-      this.movieService.addMovie(this.movie.value);
+      this.movieService.updateMovie(this.movie.value);
     }
     console.log(this.movie.value); 
   }
    
 }
-

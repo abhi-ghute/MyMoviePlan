@@ -7,18 +7,15 @@ import { Component } from '@angular/core';
 })
 export class ScreenComponent {
 
-  public seats = [
-    [
-      { number: 'A1', reserved: false,booked:false },
-      { number: 'A2', reserved: false },
-    ],
-    [
-      { number: 'B1', reserved: false },
-      { number: 'B2', reserved: false },
-    ],
+  
+  seats = [
+    { available: true },
+    { available: true },
+    { available: true },
+    // Add additional seats as needed
   ];
 
-  public reserveSeat(seat:any) {
-    seat.reserved = true;
+  toggleSeat(seat:any) {
+    seat.available = !seat.available;
   }
 }

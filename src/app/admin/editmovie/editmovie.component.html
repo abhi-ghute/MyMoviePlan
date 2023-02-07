@@ -57,20 +57,14 @@
         </div>
     </div>
     <div>
-        <label for="image">Movie Image:</label>
-        <input type="file" id="image" (change)="uploadMovieImage($event)" formControlName="image">
-        <div *ngIf="movie.get('image')?.touched && movie.get('image')?.invalid">
-            <div *ngIf="movie.get('image')?.errors?.['required']" style="color: red;">image is required
-            </div>
-        </div>
+        <label for="newimage">Movie Image:</label>
+        <input type="file" id="newimage" (change)="uploadMovieImage($event)" formControlName="newimage">
+        <!-- <img src={{movieData.image}}> -->
     </div>
     <div>
         <label for="releaseDate">Movie Release Date:</label>
         <input type="date" id="releaseDate" formControlName="releaseDate">
-        <div *ngIf="movie.get('releaseDate')?.touched && movie.get('releaseDate')?.invalid">
-            <div *ngIf="movie.get('releaseDate')?.errors?.['required']" style="color: red;">releaseDate is required
-            </div>
-        </div>
+        <div>{{currentDate}}</div>
     </div>
     <div>
         <label for="visuals">Movie present In visuals:</label>
@@ -104,10 +98,8 @@
                 <div>
                     <label for="image">Cast Image:</label>
                     <input type="file" id="image" (change)="uploadCastImage(i,$event)" formControlName="image">
-                    <div *ngIf="movie.get('cast.image')?.touched && movie.get('cast.image')?.invalid">
-                        <div *ngIf="movie.get('cast.image')?.errors?.['required']" style="color: red;">First Name is
-                            required
-                        </div>
+                    <div *ngFor="let s of movieData.cast">
+                        <img src={{s.imageData}}><br>
                     </div>
                 </div>
                 <button type="button" (click)="addCast()">Add</button>
@@ -138,10 +130,8 @@
                 <div>
                     <label for="image">Crew Image:</label>
                     <input type="file" id="image" (change)="uploadCrewImage(i,$event)" formControlName="image">
-                    <div *ngIf="movie.get('crew.image')?.touched && movie.get('crew.image')?.invalid">
-                        <div *ngIf="movie.get('crew.image')?.errors?.['required']" style="color: red;">First Name is
-                            required
-                        </div>
+                    <div *ngFor="let s of movieData.crew">
+                        <img src={{s.imageData}}>
                     </div>
                 </div>
                 <button type="button" (click)="addCrew()">Add</button>
