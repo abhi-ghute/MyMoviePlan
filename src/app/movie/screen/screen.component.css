@@ -1,8 +1,51 @@
-.available {
-    background-color: green;
+.container {
+    display: flex;
+    flex-wrap: wrap;
   }
-  
-  .reserved {
-    background-color: red;
+
+  .row {
+    display: flex;
   }
-  
+
+  .seat {
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 10px;
+    text-align: center;
+    padding: 5px 3px 5px 0px;
+  }
+
+  .blankSeat{
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .selected{
+    width: 40px;
+    height: 40px;
+    border: 1px solid springgreen;
+    border-radius: 4px;
+    background-color:springgreen;
+    margin: 10px;
+    text-align: center;
+    padding: 5px 3px 5px 0px;
+  }
+
+  .reserved{
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+    background-color:gray;
+    border-radius: 4px;
+    margin: 10px;
+    text-align: center;
+    padding: 5px 3px 5px 0px;
+  }
+.hrLine{
+  margin-top: 0;
+}

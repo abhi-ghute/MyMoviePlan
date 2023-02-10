@@ -1,10 +1,29 @@
-<table class="table">
-  <tr>
-    <td class="available">1</td>
-    <td class="available">2</td>
-    <td class="available">3</td>
-    <!-- Add additional seats as needed -->
-  </tr>
-  <!-- Add additional rows as needed -->
-</table>
-<button type="button" class="btn btn-primary">Primary</button>
+<div style="width: 92%; margin-left:4%; margin-top: 20px;">
+  <div class="d-flex justify-content-center">
+    <div class="screen"
+      style="background-color: rgb(89, 180, 234); height: 30px; width: 200px; box-shadow: 5px 5px 10px rgba(74, 159, 234, 0.457);">
+      <h6 class="d-flex justify-content-center">All eyes this way please!</h6>
+    </div>
+  </div>
+  <span>Classic-Rs.</span>
+  <hr class="hrLine">
+  <div class="classic container d-flex justify-content-center">
+    <div class="row" *ngFor="let row of classicSeats">
+      <div *ngFor="let seat of row" [ngClass]="seat.status" (click)="onSeatClick(seat.id)">{{ seat.id }}</div>
+    </div>
+  </div>
+  <span>Classic Plus-Rs.</span>
+  <hr class="hrLine">
+  <div class="classicPlus container d-flex justify-content-center">
+    <div class="row" *ngFor="let row of classicPlusSeats">
+      <div *ngFor="let seat of row" [ngClass]="seat.status" (click)="onSeatClick(seat.id)">{{ seat.id }}</div>
+    </div>
+  </div>
+  <span>Prime-Rs.</span>
+  <hr class="hrLine">
+  <div class="prime container d-flex justify-content-center">
+    <div class="row" *ngFor="let row of primeSeats">
+      <div *ngFor="let seat of row" [ngClass]="seat.status" (click)="onSeatClick(seat.id)">{{ seat.id }}</div>
+    </div>
+  </div>
+</div>

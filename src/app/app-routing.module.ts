@@ -9,6 +9,7 @@ import { LoginComponent } from './user/login/login.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { UserComponent } from './user/user.component';
 
+
 const routes: Routes = [
   {
     path: 'user', component: UserComponent,
@@ -26,7 +27,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'book', component: ScreenComponent
+    path: 'book/:screen', component: ScreenComponent
   }
 ];
 

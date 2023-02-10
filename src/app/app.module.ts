@@ -13,6 +13,7 @@ import { AddMovieComponent } from './admin/add-movie/add-movie.component';
 import { ScreenComponent } from './movie/screen/screen.component';
 import { EditmovieComponent } from './admin/editmovie/editmovie.component';
 import { MoviesListComponent } from './admin/movies-list/movies-list.component';
+import { SelectScreenComponent } from './select-screen/select-screen.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MoviesListComponent } from './admin/movies-list/movies-list.component';
     AddMovieComponent,
     ScreenComponent,
     EditmovieComponent,
-    MoviesListComponent
+    MoviesListComponent,
+    SelectScreenComponent
   ],
   imports: [
     BrowserModule,
