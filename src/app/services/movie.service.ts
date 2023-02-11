@@ -27,11 +27,26 @@ export class MovieService {
   }
 
   selectMovie(id:string):Observable<any> {
-    return this.http.post(this.rootPath + "/admin/selectMvie?id="+id,{});
+    return this.http.get(this.rootPath + "admin/selectMovie?id="+id);
   }
 
   updateStatus(status:string,id:string):Observable<any>{   
     return this.http.post(this.rootPath + "admin/updateStatus?status="+status+"&id="+id,{},{responseType:'text'});
   }
+
+  showEnableMovies():Observable<any> {
+    return this.http.get(this.rootPath + "admin/showEnableMovies");
+  }
+
+  addShow(show:object):Observable<any>{
+    return this.http.post(this.rootPath + "admin/addShow",show,{responseType:'text'});
+  }
   
+  showList():Observable<any> {
+    return this.http.get(this.rootPath + "admin/showList");
+  }
+
+  upcommingMovies():Observable<any> {
+    return this.http.get(this.rootPath + "admin/getUpcomming");
+  }
 }

@@ -1,5 +1,6 @@
-<table border="1">
-    <tr>
+<table class="table table-bordered movieList">
+    <thead>
+      <tr class="tableHeadings">
         <th>Name</th>
         <th>Type</th>
         <th>Languages</th>
@@ -8,23 +9,33 @@
         <th>Visuals</th>
         <th>Status</th>
         <th>Action</th>
-    </tr>
-    <tr *ngFor="let movie of movies">
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let movie of movies" class="tableRows">
         <td>
-            <span style="font-weight: bold; font-size: large;">{{ movie.name }} </span><br>
-            <img src={{movie.image}} alt="image_{{movie.name}}" style="width: 100px; height: 100px;">
-            
+          <span class="movieName" style="font-weight: bold; font-size: large;">{{ movie.name }} </span><br>
+          <img src={{movie.image}} alt="image_{{movie.name}}" class="movieImage">
         </td>
         <td>{{ movie.type }}</td>
         <td>{{ movie.language }}</td>
         <td>
-            <ul>
-                <li *ngFor="let c of movie.cast">{{ c.name }}</li>
-            </ul>
+          <ul>
+            <li *ngFor="let c of movie.cast">{{ c.name }}</li>
+          </ul>
         </td>
         <td>{{ movie.releaseDate }}</td>
         <td>{{ movie.visuals }}</td>
-        <td><button (click)="changeMovieStatus(movie.status,movie.id)">{{ movie.status }}</button></td>
-        <td><button (click)="editForm(movie.id)">Edit</button></td>
-    </tr>
-</table>
+        <td>
+          <button class="btn submitButton" [ngClass]="movie.status" (click)="changeMovieStatus(movie.status,movie.id)">
+            {{ movie.status }}
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-secondary editButton" (click)="editForm(movie.id)">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  

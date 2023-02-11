@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <img [src]="movie.image" alt="{{ movie.name }}" class="img-fluid">
+        </div>
+        <div class="col-md-8 bgImage"
+            style="background-image:linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));">
+            <br>
+            <h1 class="movie-title text-center text-white">{{ movie.name }}</h1>
+            <div class="movie-details d-flex flex-column align-items-center">
+                <p class="text-white mb-0">{{movie.language}}</p>
+                <p class="text-white mb-0">{{movie.visuals}}</p>
+                <p class="text-white mb-0">{{movie.type}}</p>
+                <p class="text-white mb-0">{{movie.releaseDate}}</p>
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary btn-lg d-block mx-auto mt-4" style="width: 200px;">Book
+                Tickets</button>
+        </div>
+    </div>
+</div>
+
+<div class="about-movie mt-5">
+    <h2 class="text-center mb-4">About the Movie</h2>
+    <p class="text-center mb-5">{{ movie.description }}</p>
+</div>
+
+<div class="casts mt-5">
+    <h2 class="text-center mb-4">Casts</h2>
+    <div class="d-flex justify-content-center">
+        <div *ngFor="let c of movie.cast" class="cast-item m-3">
+            <div class="d-flex flex-column align-items-center">
+                <div class="rounded-circle profile-picture" style="width: 120px; height: 120px; overflow: hidden;">
+                    <img [src]="c.imageData" alt="Profile Picture" class="img-fluid">
+                </div>
+                <h5 class="font-weight-bold mt-3 mb-0">{{c.name}}</h5>
+                <p class="text-muted">as {{ c.movieName }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="casts mt-5">
+    <h2 class="text-center mb-4">Crews</h2>
+    <div class="d-flex justify-content-center">
+        <div *ngFor="let c of movie.crew" class="cast-item m-3">
+            <div class="d-flex flex-column align-items-center">
+                <div class="rounded-circle profile-picture" style="width: 120px; height: 120px; overflow: hidden;">
+                    <img [src]="c.imageData" alt="Profile Picture" class="img-fluid">
+                </div>
+                <h5 class="font-weight-bold mt-3 mb-0">{{c.name}}</h5>
+                <p class="text-muted">as {{ c.movieName }}</p>
+            </div>
+        </div>
+    </div>
+</div>

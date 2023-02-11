@@ -13,7 +13,11 @@ import { AddMovieComponent } from './admin/add-movie/add-movie.component';
 import { ScreenComponent } from './movie/screen/screen.component';
 import { EditmovieComponent } from './admin/editmovie/editmovie.component';
 import { MoviesListComponent } from './admin/movies-list/movies-list.component';
-import { SelectScreenComponent } from './select-screen/select-screen.component';
+import { AddShowComponent } from './admin/add-show/add-show.component';
+import { MoviesComponent } from './user/movies/movies.component';
+import { ShowMovieDetailsComponent } from './user/show-movie-details/show-movie-details.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { SelectScreenComponent } from './select-screen/select-screen.component';
     ScreenComponent,
     EditmovieComponent,
     MoviesListComponent,
-    SelectScreenComponent
+    AddShowComponent,
+    MoviesComponent,
+    ShowMovieDetailsComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

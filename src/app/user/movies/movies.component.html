@@ -1,0 +1,35 @@
+<div class="container-fluid px-0">
+  <div class="jumbotron jumbotron-fluid bg-light">
+    <div class="container text-center">
+      <h1 class="display-4">Movie Booking</h1>
+      <p class="lead">Experience the magic of movies with just a few clicks</p>
+    </div>
+  </div>
+  <div class="container mt-5">
+    <h1 class="text-center mb-5">Now Showing</h1>
+    <div class="card-deck row">
+      <div class="card col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let movie of movies">
+        <img class="card-img-top" [src]="movie.image" alt="Card image cap" style="height: 200px;">
+        <div class="card-body">
+          <h5 class="card-title">{{movie.name}}</h5>
+          <p class="card-text">{{movie.visuals}}</p>
+          <p class="card-text">{{movie.language}} {{movie.type}}</p>
+          <a routerLink="/showMovieDetails/{{movie.id}}" class="btn btn-primary">Book</a>
+        </div>
+      </div>
+    </div>
+  </div>
+ <div class="container mt-5 mb-5">
+    <h1 class="text-center mb-5">Upcoming Releases</h1>
+    <div class="card-deck row">
+      <div class="card col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let movie of upcommingMovies">
+        <img class="card-img-top" [src]="movie.image" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{movie.name}}</h5>
+          <p class="card-text">{{movie.releaseDate}}</p>
+          <a routerLink="/showMovieDetails/{{movie.id}}" class="btn btn-primary">Pre-Book</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

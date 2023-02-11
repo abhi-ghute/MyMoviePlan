@@ -19,7 +19,8 @@
         <label for="classicPlusPrice">ClassicPlus Ticket Price:</label>
         <input type="text" id="classicPlusPrice" formControlName="classicPlusPrice">
         <div *ngIf="movie.get('classicPlusPrice')?.touched && movie.get('classicPlusPrice')?.invalid">
-            <div *ngIf="movie.get('classicPlusPrice')?.errors?.['required']" style="color: red;">classicPlusPrice is required
+            <div *ngIf="movie.get('classicPlusPrice')?.errors?.['required']" style="color: red;">classicPlusPrice is
+                required
             </div>
         </div>
     </div>
@@ -50,7 +51,7 @@
     <div>
         <label for="description">Movie description:</label>
         <textarea rows="4" cols="40" id="description" formControlName="description"></textarea>
-          
+
         <div *ngIf="movie.get('description')?.touched && movie.get('description')?.invalid">
             <div *ngIf="movie.get('description')?.errors?.['required']" style="color: red;">description is required
             </div>
@@ -150,11 +151,13 @@
         </div>
     </div>
     <div>
-        <label for="status">Movie statu:</label>
+        <label for="status">Movie status:</label>
         <select formControlName="status">
             <option selected value="Enable">Enable</option>
             <option value="Disable">Disable</option>
         </select>
     </div>
-    <button type="submit" [disabled]="movie.invalid">Submit</button>
+    <div class="d-flex justify-content-center">
+        <button type="submit" style="background-color: greenyellow;" [disabled]="movie.invalid">Submit</button>
+    </div>
 </form>

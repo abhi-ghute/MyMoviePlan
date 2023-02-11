@@ -1,0 +1,31 @@
+.movieList {
+    margin-top: 20px;
+  }
+  
+  .tableHeadings th {
+    text-align: center;
+    background-color: #f2f2f2;
+  }
+  
+  .tableRows td {
+    padding: 10px;
+  }
+  
+  .movieImage {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .submitButton{
+    width: 80px;
+  }
+  
+  .Enable{
+    background-color: greenyellow;
+  }
+  .Disable{
+    background-color: red;
+  }
+  .editButton {
+    width: 60px;
+  }

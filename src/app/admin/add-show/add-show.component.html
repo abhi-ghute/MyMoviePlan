@@ -1,0 +1,40 @@
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Languages</th>
+        <th>Casts</th>
+        <th>ReleaseDate</th>
+        <th>Visuals</th>
+        <th>Show Date</th>
+        <th>Show Time</th>
+        <th>Screen</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let movie of movies">
+        <td>
+            <span style="font-weight: bold; font-size: large;">{{ movie.name }} </span><br>
+            <img src={{movie.image}} alt="image_{{movie.name}}" style="width: 100px; height: 100px;">
+            
+        </td>
+        <td>{{ movie.type }}</td>
+        <td>{{ movie.language }}</td>
+        <td>
+            <ul>
+                <li *ngFor="let c of movie.cast">{{ c.name }}</li>
+            </ul>
+        </td>
+        <td>{{ movie.releaseDate }}</td>
+        <td>{{ movie.visuals }}</td>
+        <td><input type="date" name="date{{movie.id}}" id="date{{movie.id}}"></td>
+        <td><input type="time" name="time{{movie.id}}" id="time{{movie.id}}"></td>
+        <td>
+            <select name="screen{{movie.id}}" id="screen{{movie.id}}">
+                <option value="1">Screen1</option>
+                <option value="2">Screen2</option>
+                <option value="3">Screen3</option>
+            </select>
+        </td>
+        <td><button (click)="addShow(movie.id)">Add</button></td>
+    </tr>
+</table>
