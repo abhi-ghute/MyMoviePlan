@@ -4,12 +4,71 @@
       margin-top: 40px;
   }
 
+  .text-overlay {
+    position: relative;
+    }
+    
+    .overlay-text {
+    position: absolute;
+    bottom: 10%;
+    left: 20%;
+    right: 30%;
+    transform: translate(0%, 0%);
+    color: brown;
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: 1px 1px #333;
+    text-align: center;
+    }
+        
   .bgImage {
-      display: flex;
-      flex-direction: column;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      height: 450px;
-      margin-top: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 450px;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-shadow: 1px 1px #000;
+      background: linear-gradient(to bottom, #c6a5a5, rgb(119, 119, 198));
+  }
+
+
+  .movie-title {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin: 0;
+      color: brown;
+  }
+
+  .profile-picture {
+      width: 120px;
+      height: 120px;
+      overflow: hidden;
+      border: 5px solid rgb(75, 125, 218);
+      margin-bottom: 20px;
+  }
+
+  .cast-item {
+      text-align: center;
+      width: 200px;
+  }
+
+  .about-movie {
+      background-color: #f7f7f7;
+      padding: 50px 0;
+  }
+
+  .casts {
+      background-color: #f2f2f2;
+      padding: 50px 0;
+  }
+
+  .movie-details{
+    color: rgb(67, 9, 117);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
   }

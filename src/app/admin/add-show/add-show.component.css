@@ -1,0 +1,36 @@
+.movieList {
+    margin: 20px auto;
+    width: 90%;
+    text-align: center;
+    border-collapse: collapse;
+  }
+
+  .rowHeadings {
+    text-align: center;
+    background-color: beige;
+    font-weight: bold;
+  }
+
+  .tableCells {
+    padding: 10px;
+  }
+  
+  .movieImage {
+    width: 100px;
+    height: 100px;
+  }
+
+  .select,
+  .addButton {
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: lightgray;
+  }
+
+  .addButton:hover {
+    background-color: darkgray;
+    color: white;
+    cursor: pointer;
+  }
