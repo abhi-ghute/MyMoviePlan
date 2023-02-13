@@ -17,12 +17,12 @@ export class MoviesComponent {
       this.movies = data;
       console.log(this.movies);
     });
-
     this.movieService.upcommingMovies().subscribe(data => {
       this.upcommingMovies = data;
       console.log(this.upcommingMovies);
     });
   }
-  constructor(private movieService: MovieService, private router: Router) { }
+  constructor(private movieService: MovieService, private router: Router) { 
+  }
 
 }

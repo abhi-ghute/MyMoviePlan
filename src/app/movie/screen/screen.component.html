@@ -5,21 +5,21 @@
       <h6 class="d-flex justify-content-center">All eyes this way please!</h6>
     </div>
   </div>
-  <span>Classic-Rs.</span>
+  <span>Classic-Rs.{{movie.classicPrice}}</span>
   <hr class="hrLine">
   <div class="classic container d-flex justify-content-center">
     <div class="row" *ngFor="let row of classicSeats">
       <div *ngFor="let seat of row" [ngClass]="seat.status" (click)="onSeatClick(seat.id)">{{ seat.id }}</div>
     </div>
   </div>
-  <span>Classic Plus-Rs.</span>
+  <span>Classic Plus-Rs.{{movie.classicPlusPrice}}</span>
   <hr class="hrLine">
   <div class="classicPlus container d-flex justify-content-center">
     <div class="row" *ngFor="let row of classicPlusSeats">
       <div *ngFor="let seat of row" [ngClass]="seat.status" (click)="onSeatClick(seat.id)">{{ seat.id }}</div>
     </div>
   </div>
-  <span>Prime-Rs.</span>
+  <span>Prime-Rs.{{movie.primePrice}}</span>
   <hr class="hrLine">
   <div class="prime container d-flex justify-content-center">
     <div class="row" *ngFor="let row of primeSeats">
@@ -27,5 +27,5 @@
     </div>
   </div>
   <div style="margin-top: 25px;" class="d-flex justify-content-center">
-    <button style="width: 300px; font-weight: bold;" class="btn btn-success">Book Tickes</button></div>
+    <button style="width: 300px; font-weight: bold;" class="btn btn-success" (click)="book()">Book Tickes</button></div>
 </div>

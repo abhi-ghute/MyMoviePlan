@@ -18,6 +18,9 @@ import { MoviesComponent } from './user/movies/movies.component';
 import { ShowMovieDetailsComponent } from './user/show-movie-details/show-movie-details.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { AppPaymentComponent } from './app-payment/app-payment.component';
+import { BookingDetailsComponent } from './user/booking-details/booking-details.component';
+import { BookingHistoryComponent } from './user/booking-history/booking-history.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { FooterComponent } from './footer/footer.component';
     MoviesComponent,
     ShowMovieDetailsComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AppPaymentComponent,
+    BookingDetailsComponent,
+    BookingHistoryComponent
   ],
   imports: [
     BrowserModule,

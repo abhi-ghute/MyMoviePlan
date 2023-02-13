@@ -10,6 +10,7 @@ import { MovieService } from 'src/app/services/movie.service';
 export class ShowMovieDetailsComponent implements OnInit{
   id: string = '';
   movie:any;
+  show:any;
   constructor(private movieService: MovieService, private route: ActivatedRoute) {
 
   }
@@ -21,6 +22,10 @@ export class ShowMovieDetailsComponent implements OnInit{
       this.movieService.selectMovie(this.id).subscribe(data => {
         this.movie = data;
         console.log(this.movie);
+      });
+      this.movieService.getShowDetails(this.id).subscribe(data => {
+        this.show = data;
+        console.log(this.show);
       });
   }
 }

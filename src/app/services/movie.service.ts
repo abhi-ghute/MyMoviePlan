@@ -49,4 +49,12 @@ export class MovieService {
   upcommingMovies():Observable<any> {
     return this.http.get(this.rootPath + "admin/getUpcomming");
   }
+  getShowDetails(id:string):Observable<any> {
+    return this.http.get(this.rootPath + "admin/getShowDetails?id="+id);
+  }
+
+  getShow(sid:string):Observable<any> {
+    return this.http.get(this.rootPath + "admin/getShow?id="+sid);
+  }
+
 }

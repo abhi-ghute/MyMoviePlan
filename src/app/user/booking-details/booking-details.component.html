@@ -1,0 +1,15 @@
+<div class="ticket container my-5">
+    <div class="row">
+      <div class="col-md-5 text-center">
+        <img [src]="movie.image" class="img-fluid">
+      </div>
+      <div class="col-md-7">
+        <h1 class="display-4 movie-title">{{ movie.name }}</h1>
+        <p class="lead">Date: <span class="movie-detail">{{ show.date }}</span></p>
+        <p class="lead">Time: <span class="movie-detail">{{ show.time }}</span></p>
+        <p class="lead">Seats Booked: <span class="movie-detail">{{ ticketData.selectedSeats }}</span></p>
+        <p class="lead">Screen: <span class="movie-detail">{{ show.screenNumber }}</span></p>
+        <p class="lead">Amount Paid: <span class="movie-detail">{{ ticketData.totalCost }}</span></p>
+      </div>
+    </div>
+  </div>

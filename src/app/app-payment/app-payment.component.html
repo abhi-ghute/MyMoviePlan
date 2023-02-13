@@ -1,0 +1,24 @@
+<div class="container">
+    <h1 class="text-center">Payment Gateway</h1>
+    <p class="text-center">Total Cost: Rs.<span id="totalCost" style="font-weight: bold;">{{this.ticketData.totalCost}}</span></p>
+    <form>
+      <div class="form-group">
+        <label for="cardNumber">Card Number</label>
+        <input type="text" id="cardNumber" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="expiryMonth">Expiry Month</label>
+        <input type="text" id="expiryMonth" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="expiryYear">Expiry Year</label>
+        <input type="text" id="expiryYear" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="cvv">CVV</label>
+        <input type="password" id="cvv" class="form-control">
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary btn-block" (click)="pay()">PAY</button>
+    </form>
+  </div>

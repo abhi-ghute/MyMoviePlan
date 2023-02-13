@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MovieService } from 'src/app/services/movie.service';
 import { ScreenService } from 'src/app/services/screen.service';
+import { TicketService } from 'src/app/services/ticket.service';
 
 interface seat{
   id:string,
@@ -14,27 +16,57 @@ interface seat{
 export class ScreenComponent implements OnInit {
 
   seatData: any;
-  screen: string = '';
+  screen: any;
   classicSeats:[seat[]] = [[]];
   classicPlusSeats:[seat[]]= [[]];
   primeSeats:[seat[]]= [[]];
+  movie:any;
+  selectedSeats:string[]=[];
+  reservedSeats:string[]=[];
+  mid:string='';
+  sid:string='';
+  totalCost:number=0;
+  ticketData:any;
 
-  constructor(private screenService: ScreenService, private route: ActivatedRoute) {
+  constructor(private screenService: ScreenService, private route: ActivatedRoute,private movieService:MovieService,private router:Router,private ticketService:TicketService) {
 
-    this.route.params.subscribe(params => {
-      this.screen = params['screen'];
-    });
+    this.sid = this.route.snapshot.queryParams['sid'];
+    this.mid = this.route.snapshot.queryParams['id'];    
 
-    this.screenService.scrennData(this.screen).subscribe(data => {
-      this.seatData = data;
+    this.movieService.getShow(this.sid).subscribe(data => {
+      this.screen = data;
 
-      this.initializeSeats();
-
+      this.screenService.scrennData(this.screen.screenNumber).subscribe(data => {
+        this.seatData = data;
+  
+        this.initializeSeats();
+  
+      });
+      
     });
 
   }
 
   ngOnInit(): void {
+
+    if(sessionStorage.getItem("id") == undefined ||sessionStorage.getItem("id")==''|| sessionStorage.getItem("id")==null)
+    {
+      this.router.navigate(['/user/login']);
+    }
+    this.ticketService.getTicketsBySid(this.sid).subscribe(data => {
+      this.ticketData=data;
+      for(let d of Object(Array.from(this.ticketData))){
+        for(let s of d.selectedSeats){
+          this.reservedSeats.push(s);
+        }
+      }
+      console.log(this.reservedSeats);
+    });  
+
+    let id = this.route.snapshot.queryParams['id'];
+    this.movieService.selectMovie(id).subscribe(data=>{
+      this.movie=data;
+    });
   }
   toggleSeat(seat: any) {
     seat.available = !seat.available;
@@ -50,6 +82,10 @@ export class ScreenComponent implements OnInit {
         temp1.push(newSeat);
       }
       const newSeat = { id: "C" + i,status:'seat'};
+      if(this.reservedSeats.includes(newSeat.id)){
+        newSeat.status="reserved";
+      }
+      
       temp1.push(newSeat);
 
       if(i==11){
@@ -66,6 +102,11 @@ export class ScreenComponent implements OnInit {
         temp1.push(newSeat);
       }
       const newSeat = { id: "B" + i,status:'seat'};
+      console.log(this.reservedSeats);
+      
+      if(this.reservedSeats.includes(newSeat.id)){
+        newSeat.status="reserved";
+      }
       temp1.push(newSeat);
 
       if([16,32,48,64,80].includes(i)){
@@ -82,6 +123,9 @@ export class ScreenComponent implements OnInit {
         temp1.push(newSeat);
       }
       const newSeat = { id: "A" + i,status:'seat'};
+      if(this.reservedSeats.includes(newSeat.id)){
+        newSeat.status="reserved";
+      }
       temp1.push(newSeat);
 
       if([16,32,48].includes(i)){
@@ -113,13 +157,51 @@ export class ScreenComponent implements OnInit {
             if(s.status==="reserved"){
               return;
             }
-            else{
-              s.status="reserved";
+            else if(s.status==="selected"){
+              s.status="seat";
+              this.selectedSeats.splice(this.selectedSeats.indexOf(id), 1);
+              console.log(this.selectedSeats);
+              if(s.id.includes('C')){
+                this.totalCost = this.totalCost-Number(this.movie.classicPrice);
+              }
+              if(s.id.includes('B')){
+                this.totalCost = this.totalCost-Number(this.movie.classicPlusPrice);
+              }
+              if(s.id.includes('A')){
+                this.totalCost = this.totalCost-Number(this.movie.primePrice);
+              }
             }
+            else{
+              s.status="selected";
+              this.selectedSeats.push(id);
+              console.log(this.selectedSeats);
+              if(s.id.includes('C')){
+                this.totalCost = this.totalCost+Number(this.movie.classicPrice);
+              }
+              if(s.id.includes('B')){
+                this.totalCost = this.totalCost+Number(this.movie.classicPlusPrice);
+              }
+              if(s.id.includes('A')){
+                this.totalCost = this.totalCost+Number(this.movie.primePrice);
+              }
+            }
+            console.log(this.totalCost);
+            
           }
         }
         
       }
     }
+  }
+
+  book(){
+    let data={
+      mid:this.mid,
+      sid:this.sid,
+      uid:sessionStorage.getItem("id"),
+      selectedSeats:this.selectedSeats,
+      totalCost:this.totalCost
+    }
+    this.router.navigate(['/payment'],{queryParams:data});
   }
 }

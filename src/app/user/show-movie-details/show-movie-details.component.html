@@ -16,7 +16,7 @@
                 <p class="mb-0">{{movie.releaseDate}}</p>
             </div>
             <br>
-            <button type="button" routerLink="/book/{{movie.id}}" class="btn btn-primary btn-lg d-block mx-auto mt-4" style="width: 200px;">Book Tickets</button>
+            <button type="button" routerLink="/book" [queryParams]="{id:movie.id,sid:show.sid}" class="btn btn-primary btn-lg d-block mx-auto mt-4" style="width: 200px;">Book Tickets</button>
         </div>
     </div>
 </div>
