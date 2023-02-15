@@ -10,6 +10,9 @@ import { MovieService } from 'src/app/services/movie.service';
 export class MoviesListComponent implements OnInit {
 
   movies: any;
+  sortedMovies: any[] = []; // initialize an empty array for sorted movies
+  currentSortColumn: string = '';
+  currentSortOrder: boolean = true;
 
 
   ngOnInit() {
@@ -31,6 +34,29 @@ export class MoviesListComponent implements OnInit {
   }
 
   editForm(id: string) {
-    this.router.navigate(['/admin/editMovie',id]);
+    this.router.navigate(['/admin/editMovie', id]);
   }
+
+  sortColumn(columnName: string, sortOrder: boolean) {
+    if (this.currentSortColumn === columnName) {
+      // if the user clicked the same column again, toggle the sort order
+      this.currentSortOrder = !this.currentSortOrder;
+    } else {
+      // if the user clicked a different column, reset the sort order to ascending
+      this.currentSortOrder = true;
+      this.currentSortColumn = columnName;
+    }
+
+    // sort the movies array based on the chosen column and sort order
+    this.sortedMovies = this.movies.sort((a: any, b: any) => {
+      if (a[columnName] > b[columnName]) {
+        return sortOrder ? 1 : -1;
+      } else if (a[columnName] < b[columnName]) {
+        return sortOrder ? -1 : 1;
+      } else {
+        return 0;
+      }
+    });
+  }
+
 }

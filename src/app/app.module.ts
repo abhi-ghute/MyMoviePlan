@@ -21,6 +21,8 @@ import { FooterComponent } from './footer/footer.component';
 import { AppPaymentComponent } from './app-payment/app-payment.component';
 import { BookingDetailsComponent } from './user/booking-details/booking-details.component';
 import { BookingHistoryComponent } from './user/booking-history/booking-history.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { BookingHistoryComponent } from './user/booking-history/booking-history.
     FooterComponent,
     AppPaymentComponent,
     BookingDetailsComponent,
-    BookingHistoryComponent
+    BookingHistoryComponent,
+    ChangePasswordComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

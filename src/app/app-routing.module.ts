@@ -6,7 +6,9 @@ import { AdminComponent } from './admin/admin.component';
 import { EditmovieComponent } from './admin/editmovie/editmovie.component';
 import { MoviesListComponent } from './admin/movies-list/movies-list.component';
 import { AppPaymentComponent } from './app-payment/app-payment.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ScreenComponent } from './movie/screen/screen.component';
+import { SearchComponent } from './search/search.component';
 import { BookingDetailsComponent } from './user/booking-details/booking-details.component';
 import { BookingHistoryComponent } from './user/booking-history/booking-history.component';
 import { LoginComponent } from './user/login/login.component';
@@ -21,7 +23,6 @@ const routes: Routes = [
     path: 'user', component: UserComponent,
     children:[
       {path:'register',component:RegistrationComponent},
-      {path:'login',component:LoginComponent},
       {path:'movies',component:MoviesComponent},
       {path:'showMovieDetails/:id',component:ShowMovieDetailsComponent},
       {path:'ticket',component:BookingDetailsComponent},
@@ -37,6 +38,8 @@ const routes: Routes = [
       {path:'addShow',component:AddShowComponent}
     ]
   },
+  {path:'login',component:LoginComponent},
+  {path:'changePassword',component:ChangePasswordComponent},
   {
     path: 'book', component: ScreenComponent
   },
@@ -48,6 +51,9 @@ const routes: Routes = [
   },
   {
     path: '', component: MoviesComponent
+  },
+  {
+    path:'search',component:SearchComponent
   }
 ];
 

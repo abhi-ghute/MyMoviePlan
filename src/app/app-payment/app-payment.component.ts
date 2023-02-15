@@ -20,7 +20,7 @@ export class AppPaymentComponent implements OnInit{
   ngOnInit(): void {
     if(sessionStorage.getItem("id") == undefined ||sessionStorage.getItem("id")==''|| sessionStorage.getItem("id")==null)
     {
-      this.router.navigate(['/user/login']);
+      this.router.navigate(['/login']);
     }
   }
 

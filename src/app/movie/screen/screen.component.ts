@@ -51,7 +51,7 @@ export class ScreenComponent implements OnInit {
 
     if(sessionStorage.getItem("id") == undefined ||sessionStorage.getItem("id")==''|| sessionStorage.getItem("id")==null)
     {
-      this.router.navigate(['/user/login']);
+      this.router.navigate(['/login']);
     }
     this.ticketService.getTicketsBySid(this.sid).subscribe(data => {
       this.ticketData=data;
