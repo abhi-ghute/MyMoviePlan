@@ -6,9 +6,23 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      
       <div *ngIf="loggedIn; then login else regular"></div>
-
+      <ng-template #regular>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-white font-weight-bold" aria-current="page" href="/home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white font-weight-bold" href="/home">Movies</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white font-weight-bold" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white font-weight-bold" href="/user/register">Register</a>
+          </li>
+        </ul>
+      </ng-template>
       <ng-template #login>
         <div *ngIf="isAdmin; then admin else user"></div>
         <ng-template #admin>
@@ -44,24 +58,12 @@
             <li class="nav-item">
               <a class="nav-link text-white font-weight-bold" href="/user/ticketHistory">Booking History</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link text-white font-weight-bold" (click)="logout()">Logout</a>
+            </li>
           </ul>
         </ng-template>
       </ng-template>
-
-      <ng-template #regular>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active text-white font-weight-bold" aria-current="page" href="/home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white font-weight-bold" href="/home">Movies</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white font-weight-bold" href="/user/ticketHistory">Booking History</a>
-          </li>
-        </ul>
-      </ng-template>
-
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" name="searchText" [(ngModel)]="searchText" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" (click)="search()">Search</button>

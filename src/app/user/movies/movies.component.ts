@@ -12,6 +12,21 @@ export class MoviesComponent {
   movies: any;
   upcommingMovies:any;
 
+  discounts = [
+    {
+      amount: '10% off',
+      image: 'https://cdn.grabon.in/gograbon/images/web-images/uploads/1618550698601/inox-offers.jpg'
+    },
+    {
+      amount: '20% off',
+      image: 'https://d168jcr2cillca.cloudfront.net/uploadimages/coupons/4596-NoMoreQ.jpg'
+    },
+    {
+      amount: '30% off',
+      image: 'https://example.com/discount3.png'
+    }
+  ];
+
   ngOnInit() {
     this.movieService.showList().subscribe(data => {
       this.movies = data;

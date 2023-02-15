@@ -14,12 +14,9 @@ export class HeaderComponent implements OnInit {
   searchText:string='';
 
   constructor(private router:Router) {
-  }
-
-  ngOnInit(): void {
     let t = sessionStorage.getItem('id');
 
-    if (t != null) {
+    if (t != null && t!='') {
       if (t == 'admin') {
         this.isAdmin = true;
       }
@@ -27,6 +24,9 @@ export class HeaderComponent implements OnInit {
       this.loggedIn = true;
     }
 
+  }
+
+  ngOnInit(): void {
   }
 
   logout(){
