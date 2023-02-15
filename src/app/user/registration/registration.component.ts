@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { Router } from '@angular/router';
 import { RegisterUserService } from 'src/app/services/register-user.service';
 
 
@@ -10,7 +11,7 @@ import { RegisterUserService } from 'src/app/services/register-user.service';
 })
 export class RegistrationComponent {
 
-  constructor(private registerService:RegisterUserService){}
+  constructor(private registerService:RegisterUserService,private router:Router){}
   
   registration = new FormGroup({
     firstName: new FormControl('',[Validators.required]),
@@ -27,6 +28,7 @@ export class RegistrationComponent {
     }else{
       this.registerService.register(this.registration.value);
     }
-    console.log(this.registration.value);
+    alert(this.registration.value);
+    this.router.navigate(['/login']);
   }
 }

@@ -115,7 +115,8 @@ export class AddMovieComponent {
     }else{
       this.movieService.addMovie(this.movie.value);
     }
-    console.log(this.movie.value); 
+    alert("success"); 
+    this.movie.reset();
   }
    
 }
